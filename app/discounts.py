@@ -22,7 +22,7 @@ discounts on a bill
         "affiliate": 0.1,
     }
     proportion_discount = (amount // 100) * 5
-    percentage_discount = _rates.get(user_type) * amount
+    percentage_discount = _rates.get(user_type, 0) * amount
     if years > 2:
         percentage_discount = 0.5 * amount
     if grocery_p:
