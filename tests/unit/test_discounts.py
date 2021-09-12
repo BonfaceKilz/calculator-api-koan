@@ -31,14 +31,6 @@ class TestDiscounts(TestCase):
                                 grocery_p=False),
             450)
 
-    def test_three_year_long_affiliate_discount(self):
-        self.assertEqual(
-            calculate_discounts(user_type="affiliate",
-                                amount=990,
-                                years=3,
-                                grocery_p=False),
-            450)
-
     def test_three_year_long_employee_discount_with_groceries(self):
         self.assertEqual(
             calculate_discounts(user_type="affiliate",
