@@ -1,3 +1,4 @@
+"""Test cases for app/api/discounts.py"""
 import unittest
 import json
 
@@ -5,6 +6,7 @@ from app import create_app
 
 
 class DiscountsAPITest(unittest.TestCase):
+    """Simple Test Case for the api"""
     def setUp(self):
         self.app = create_app().test_client()
 

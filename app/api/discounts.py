@@ -19,8 +19,7 @@ def calculate_net_payable_amount(user_type="customer"):
                 user_type=user_type,
                 amount=_data.get("amount"),
                 years=_data.get("years"),
-                grocery_p=True
-                if _data.get("grocery_p").lower() == "true" else False))
+                grocery_p=_data.get("grocery_p").lower() == "true"))
     # pylint: disable=W0703
     except Exception:
         print(traceback.format_exc())

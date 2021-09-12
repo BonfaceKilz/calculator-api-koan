@@ -1,3 +1,4 @@
+"""Module for calculating discounts"""
 from typing import Union
 
 
