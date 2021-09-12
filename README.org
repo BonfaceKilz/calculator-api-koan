@@ -1,0 +1,89 @@
+* Retail Store Discounts
+
+On a retail website, the following discounts apply:
+
+1. If the user is an employee of the store, he gets a 30% discount
+2. If the user is an affiliate of the store, he gets a 10% discount 
+3. If the user has been a customer for over 2 years, he gets a 5% discount. 
+4. For every $100 on the bill, there would be a $ 5 discount (e.g. for
+   $990, you get $ 45 as a discount).
+5. The percentage based discounts do not apply on groceries. 
+6. A user can get only one of the percentage based discounts on a bill. 
+
+This is a simple application that demonstrates how you can code this
+in Python using Functional Programming.
+
+** Installation and Tests
+*** Using guix
+Simply load up the environment (for development purposes):
+
+: guix environment --load=guix.scm
+
+Better yet, you could run a proper container:
+
+: guix environment -C --network --load=guix.scm
+
+*** Running Tests
+
+(assuming you are in a guix container; otherwise use venv!)
+
+To run tests:
+
+: python -m unittest discover -v
+
+Running pylint:
+
+: pylint *py tests app
+
+Running mypy(type-checker):
+
+: mypy .
+
+*** Running the flask app
+
+To spin up the server:
+
+: env FLASK_DEBUG=1 FLASK_APP="main.py" flask run --port=8080
+
+*** Using python-pip
+
+IMPORTANT NOTE: I do not recommend using pip tools, use Guix instead
+
+1. Prepare your system. You need to make you have python > 3.8, and
+   the ability to install modules.
+2. Create and enter your virtualenv:
+
+#+begin_src sh
+virtualenv --python python3 venv
+. venv/bin/activate
+#+end_src
+
+3. Install the required packages
+
+#+begin_src 
+# The --ignore-installed flag forces packages to
+# get installed in the venv even if they existed 
+# in the global env
+pip install -r requirements.txt --ignore-installed
+#+end_src
+
+*** A note on dependencies
+
+Make sure that the dependencies in the `requirements.txt` file match
+those in guix. To freeze dependencies:
+
+#+begin_src sh
+# Consistent way to ensure you don't capture globally
+# installed packages
+pip freeze --path venv/lib/python3.8/site-packages > requirements.txt
+#+end_src
+
+** Road Map
+
+Port this to:
+
+- [ ] Haskell
+- [ ] Guile
+- [ ] Rust
+
+as some form as kata since it's a simple enough exercise.
